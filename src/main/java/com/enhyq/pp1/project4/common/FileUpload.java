@@ -30,7 +30,6 @@ public class FileUpload {
             String sid = multipartRequest.getParameter("sid");
             if(sid!=null && !sid.equals("")) one.setSid(Integer.parseInt(sid));
             one.setUserid(multipartRequest.getParameter("userid"));
-            System.out.println(multipartRequest.getParameter("userid"));
             one.setUsername(multipartRequest.getParameter("username"));
             one.setPassword(multipartRequest.getParameter("password"));
             one.setEmail(multipartRequest.getParameter("email"));
