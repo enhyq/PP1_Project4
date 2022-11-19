@@ -7,7 +7,8 @@
 <body>
 <h1><%= "Hello World!" %>
 </h1>
+<p>ueL9ies8Ei</p>
 <br/>
-<a href="form.jsp">Go to form</a>
+<a href="list.jsp">Go to list</a>
 </body>
 </html>
