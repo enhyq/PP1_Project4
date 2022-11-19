@@ -32,6 +32,7 @@
 <body>
     <h1 class="text-center">Member Edit</h1>
     <form class="w-50 m-auto" action="edit_ok.jsp" method="post" enctype="multipart/form-data">
+        <input type="hidden" id="sid" name="sid" value="<%=member.getSid() %>"/>
         <div class="text-center">
             <c:if test="${vo.getPhoto() ne ''}">
                 <img src="${pageContext.request.contextPath}/upload/${vo.getPhoto()}" class="rounded" width="200" >
@@ -40,43 +41,43 @@
         <div class="mb-3 row">
             <label for="photo" class="col-sm-2 col-form-label">Image</label>
             <div class="col-sm-10">
-                <input class="form-control" type="file" id="photo">
+                <input class="form-control" type="file" id="photo" name="photo">
             </div>
         </div>
         <div class="mb-3 row">
             <label for="userid" class="col-sm-2 col-form-label">UserID</label>
             <div class="col-sm-10">
-                <input type="text" readonly class="form-control-plaintext" id="userid" value="<%=member.getUserid()%>">
+                <input type="text" readonly class="form-control-plaintext" id="userid" name="userid" value="<%=member.getUserid()%>">
             </div>
         </div>
         <div class="mb-3 row">
             <label for="username" class="col-sm-2 col-form-label">Username</label>
             <div class="col-sm-10">
-                <input type="text" readonly class="form-control-plaintext" id="username" value="<%=member.getUsername()%>">
+                <input type="text" class="form-control" id="username" name="username" value="<%=member.getUsername()%>">
             </div>
         </div>
         <div class="mb-3 row">
             <label for="password" class="col-sm-2 col-form-label">Password</label>
             <div class="col-sm-10">
-                <input type="password" readonly class="form-control-plaintext" id="password" value="<%=member.getPassword()%>">
+                <input type="password" readonly class="form-control-plaintext" id="password" name="password" value="<%=member.getPassword()%>">
             </div>
         </div>
         <div class="mb-3 row">
-            <label for="blogurl" class="col-sm-2 col-form-label">Email</label>
+            <label for="email" class="col-sm-2 col-form-label">Email</label>
             <div class="col-sm-10">
-                <input type="email" readonly class="form-control-plaintext" id="blogurl" value="<%=member.getEmail()%>">
+                <input type="email" class="form-control" id="email" name="email" value="<%=member.getEmail()%>">
             </div>
         </div>
         <div class="mb-3 row">
             <label for="blogurl" class="col-sm-2 col-form-label">BlogURL</label>
             <div class="col-sm-10">
-                <input type="text" readonly class="form-control-plaintext" id="email" value="<%=member.getEmail()%>">
+                <input type="text" readonly class="form-control-plaintext" id="blogurl" name="blogurl" value="<%=member.getBlogurl()%>">
             </div>
         </div>
         <div class="mb-3 row">
             <label for="detail" class="col-sm-2 col-form-label">Detail</label>
             <div class="col-sm-10">
-                <textarea readonly class="form-control-plaintext" id="detail" rows="3"><%=member.getDetail()%></textarea>
+                <textarea class="form-control" id="detail" name="detail" rows="3"><%=member.getDetail()%></textarea>
             </div>
         </div>
         <div class="text-center">

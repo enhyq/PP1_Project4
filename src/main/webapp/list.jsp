@@ -16,6 +16,11 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    function delete_ok(sid){
+      if(confirm("정말로 삭제하겠습니까?")) location.href='delete_ok.jsp?sid=' + sid;
+    }
+  </script>
   <title>Member List</title>
 </head>
 <body>
@@ -28,39 +33,39 @@
   ArrayList<MemberVO> members = memberDAO.getList();
 //  members.sort(Collections.reverseOrder());
 %>
-  <div class="table-responsive">
-    <table class="table table-striped table-bordered table-hover align-middle text-center w-auto mx-auto">
-      <thead class="table-dark">
-        <tr class="align-middle">
-          <th scope="col"> sid </th>
-          <th scope="col"> Userid </th>
-          <th scope="col"> Username </th>
-          <th scope="col"> Photo </th>
-          <th scope="col"> Email </th>
-          <th scope="col"> Detail </th>
-          <th scope="col"> Registered Date </th>
-          <th scope="col"> <button type="button" onclick="location.href='addform.jsp'" class="btn btn-success">Add</button> </th>
-        </tr>
-      </thead>
-      <%
-        for( MemberVO member : members ){
-      %>
-      <tr>
-        <td><%= member.getSid() %></td>
-        <td><%= member.getUserid() %></td>
-        <td><%= member.getUsername() %></td>
-        <td><%= member.getPhoto() %></td>
-        <td><%= member.getEmail() %></td>
-        <td><%= member.getDetail() %></td>
-        <td><%= member.getRegdate() %></td>
-        <td>
-          <button type="button" onclick="location.href='view.jsp?sid=<%=member.getSid()%>'" class="btn btn-warning">View</button>
-          <button type="button" onclick="location.href='editform.jsp?sid=<%=member.getSid()%>'" class="btn btn-primary">Edit</button>
-          <button type="button" onclick="location.href='delete_ok.jsp?sid=<%=member.getSid()%>'" class="btn btn-danger">Delete</button>
-        </td>
-      </tr>
-      <% } %>
-    </table>
-  </div>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover align-middle text-center w-auto mx-auto">
+    <thead class="table-dark">
+    <tr class="align-middle">
+      <th scope="col"> sid </th>
+      <th scope="col"> Userid </th>
+      <th scope="col"> Username </th>
+      <th scope="col"> Photo </th>
+      <th scope="col"> Email </th>
+      <th scope="col"> Detail </th>
+      <th scope="col"> Registered Date </th>
+      <th scope="col"> <button type="button" onclick="location.href='addform.jsp'" class="btn btn-success">Add</button> </th>
+    </tr>
+    </thead>
+    <%
+      for( MemberVO member : members ){
+    %>
+    <tr>
+      <td><%= member.getSid() %></td>
+      <td><%= member.getUserid() %></td>
+      <td><%= member.getUsername() %></td>
+      <td><img src="${pageContext.request.contextPath}/upload/<%= member.getPhoto() %>" width="100"></td>
+      <td><%= member.getEmail() %></td>
+      <td><%= member.getDetail() %></td>
+      <td><%= member.getRegdate() %></td>
+      <td>
+        <button type="button" onclick="location.href='view.jsp?sid=<%=member.getSid()%>'" class="btn btn-warning">View</button>
+        <button type="button" onclick="location.href='editform.jsp?sid=<%=member.getSid()%>'" class="btn btn-primary">Edit</button>
+        <button type="button" onclick="delete_ok(<%=member.getSid()%>)" class="btn btn-danger">Delete</button>
+      </td>
+    </tr>
+    <% } %>
+  </table>
+</div>
 </body>
 </html>
